@@ -12,7 +12,7 @@ order by hire_date desc
 
 --List the manager of each department with the following information: 
 --department number, department name, the manager's employee number, last name, first name, and start and end employment dates.
-select dm.dept_no, d.dept_name, e.emp_no, e.last_name, e.first_name, t.from_date, t.to_date
+select dm.dept_no, d.dept_name, e.emp_no, e.last_name, e.first_name, t.from_date, t.to_date, t.title
 from employees e
 inner join dept_manager dm
 on e.emp_no = dm.emp_no
@@ -22,6 +22,7 @@ inner join dept_emp de
 on de.emp_no = e.emp_no
 inner join titles t
 on t.emp_no = e.emp_no
+where t.title = 'Manager'
 
 --List the department of each employee with the following information: employee number, last name, first name, and department name.
 select e.emp_no, e.last_name, e.first_name, d.dept_name
